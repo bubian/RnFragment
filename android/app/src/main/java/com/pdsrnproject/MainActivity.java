@@ -2,6 +2,9 @@ package com.pdsrnproject;
 
 import com.facebook.react.ReactActivity;
 
+/**
+ * @author pengdaosong
+ */
 public class MainActivity extends ReactActivity {
 
     /**
