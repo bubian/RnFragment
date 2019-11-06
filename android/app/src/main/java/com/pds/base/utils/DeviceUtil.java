@@ -1,5 +1,6 @@
-package com.medlinker.base.utils;
+package com.pds.base.utils;
 
+import android.Manifest.permission;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.ClipData;
@@ -7,24 +8,23 @@ import android.content.ClipboardManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.text.Selection;
 import android.text.Spannable;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.EditText;
-
-import com.heaven7.core.util.Logger;
-import com.heaven7.core.util.SPHelper;
-import com.medlinker.base.BaseApplication;
-
+import com.pds.base.MainApplication;
 import java.util.List;
 import java.util.UUID;
 
@@ -42,7 +42,7 @@ public class DeviceUtil {
 
     public static DisplayMetrics getDisplayMetrics() {
         if (null == mDisplayMetrics) {
-            mDisplayMetrics = BaseApplication.getApplication().getResources().getDisplayMetrics();
+            mDisplayMetrics = MainApplication.getApplication().getResources().getDisplayMetrics();
         }
         return mDisplayMetrics;
     }
@@ -130,7 +130,8 @@ public class DeviceUtil {
      * @return
      */
     public static int getMemoryClass(Context context) {
-        ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager manager = (ActivityManager) context
+                .getSystemService(Context.ACTIVITY_SERVICE);
         return manager.getMemoryClass();
     }
 
@@ -162,7 +163,8 @@ public class DeviceUtil {
         if (null == context || TextUtils.isEmpty(text)) {
             return;
         }
-        ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipboardManager clipboardManager = (ClipboardManager) context
+                .getSystemService(Context.CLIPBOARD_SERVICE);
         clipboardManager.setPrimaryClip(ClipData.newPlainText(text, text));
     }
 
@@ -172,7 +174,8 @@ public class DeviceUtil {
      * @return
      */
     public static boolean isSdcardExist() {
-        return android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
+        return android.os.Environment.getExternalStorageState()
+                .equals(android.os.Environment.MEDIA_MOUNTED);
     }
 
     /**
@@ -192,12 +195,17 @@ public class DeviceUtil {
         StringBuilder deviceId = new StringBuilder();
         try {
             //IMEI（imei）//Need read phone state PERMISSION
-            TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            TelephonyManager tm = (TelephonyManager) context
+                    .getSystemService(Context.TELEPHONY_SERVICE);
+            if (ActivityCompat.checkSelfPermission(context, permission.READ_PHONE_STATE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                return "";
+            }
             String imei = tm.getDeviceId();
             if (!TextUtils.isEmpty(imei)) {
                 deviceId.append("imei");
                 deviceId.append(imei);
-                Logger.d("Track", "getDeviceId_imei", deviceId.toString());
+                Log.d("Track", "getDeviceId_imei = " + deviceId.toString());
                 return deviceId.toString();
             }
             //序列号（sn）
@@ -205,7 +213,7 @@ public class DeviceUtil {
             if (!TextUtils.isEmpty(sn)) {
                 deviceId.append("sn");
                 deviceId.append(sn);
-                Logger.d("Track", "getDeviceId_sn", deviceId.toString());
+                Log.d("Track", "getDeviceId_sn = "+ deviceId.toString());
                 return deviceId.toString();
             }
         } catch (Exception e) {
@@ -214,7 +222,6 @@ public class DeviceUtil {
         try {
             final String aid = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
             if (!TextUtils.isEmpty(aid)) {
-                Logger.d("Track", "getDeviceId_ANDROID_ID", aid);
                 return aid;
             }
 
@@ -225,7 +232,6 @@ public class DeviceUtil {
             if (!TextUtils.isEmpty(wifiMac)) {
                 deviceId.append("wifi");
                 deviceId.append(wifiMac);
-                Logger.d("Track", "getDeviceId_mac", deviceId.toString());
                 return deviceId.toString();
             }
             //如果上面都没有， 则生成一个id：随机码
@@ -233,14 +239,12 @@ public class DeviceUtil {
             if (!TextUtils.isEmpty(uuid)) {
                 deviceId.append("uuid");
                 deviceId.append(uuid);
-                Logger.d("Track", "getDeviceId_RANDOM", deviceId.toString());
                 return deviceId.toString();
             }
         } catch (Exception e) {
             e.printStackTrace();
             deviceId.append("uuid").append(getUUID(context));
         }
-        Logger.d("Track", "getDeviceId_RANDOM", deviceId.toString());
         return deviceId.toString();
     }
 
@@ -249,12 +253,7 @@ public class DeviceUtil {
      * 得到全局唯一UUID
      */
     public static String getUUID(Context context) {
-        String uuid = SPHelper.getString(context, "sysCacheMap_uuid");
-        if (TextUtils.isEmpty(uuid)) {
-            uuid = UUID.randomUUID().toString();
-            SPHelper.putString(context, "sysCacheMap_uuid", uuid);
-        }
-        Logger.d("Track", "getUUID", uuid);
+        String uuid =  UUID.randomUUID().toString();
         return uuid;
     }
 

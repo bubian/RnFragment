@@ -1,17 +1,13 @@
-package com.medrn.base;
+package com.pds.rn.rectactivity;
 
 import android.app.Activity;
 import android.text.TextUtils;
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.ListIterator;
 import java.util.Map;
 
-/**
- * @author hmy
- */
-public class RNActivityManger {
+public class RnActivityManger {
 
     private static LinkedHashMap<String, Activity> sRNActivityMap = new LinkedHashMap<>();
 

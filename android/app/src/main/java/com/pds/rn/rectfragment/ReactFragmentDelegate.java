@@ -1,4 +1,4 @@
-package com.pds.rectfragment;
+package com.pds.rn.rectfragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

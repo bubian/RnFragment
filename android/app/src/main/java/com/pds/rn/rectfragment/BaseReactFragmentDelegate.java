@@ -1,4 +1,4 @@
-package com.pds.rectfragment;
+package com.pds.rn.rectfragment;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

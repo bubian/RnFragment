@@ -1,4 +1,4 @@
-package com.pds.rectfragment;
+package com.pds.rn.rectfragment;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -6,9 +6,9 @@ import android.text.TextUtils;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
-import com.pds.utils.FragmentRNCollector;
-import com.pds.utils.IntentHelper;
-import com.pds.utils.ReactNativeEventHelper;
+import com.pds.rn.utils.FragmentRNCollector;
+import com.pds.base.utils.IntentHelper;
+import com.pds.rn.utils.RnEventHelper;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.HashMap;
@@ -97,8 +97,8 @@ public class ReactFragment extends BaseReactFragment implements
         super.setUserVisibleHint(isVisibleToUser);
         mIsVisibleToUser = isVisibleToUser;
         FragmentRNCollector.onVisible(getCurrentModuleRouterName(), mIsVisibleToUser && !mIsStoped);
-        createWritableMap(isVisibleToUser ? ReactNativeEventHelper.EVENT_KEY_FRAGMENT_WILL_APPEAR
-                : ReactNativeEventHelper.EVENT_KEY_FRAGMENT_WILL_DISAPPEAR);
+        createWritableMap(isVisibleToUser ? RnEventHelper.EVENT_KEY_FRAGMENT_WILL_APPEAR
+                : RnEventHelper.EVENT_KEY_FRAGMENT_WILL_DISAPPEAR);
     }
 
     @Override
@@ -119,7 +119,7 @@ public class ReactFragment extends BaseReactFragment implements
         WritableMap params = new WritableNativeMap();
         params.putString(MODULE_NAME, mCurModuleName);
         params.putString(ROUTE_NAME, mCurPageName);
-        ReactNativeEventHelper.setEvent(eventName, params);
+        RnEventHelper.sendEvent(eventName, params);
     }
 
     @Override

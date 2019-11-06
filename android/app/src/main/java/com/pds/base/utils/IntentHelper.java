@@ -1,4 +1,4 @@
-package com.pds.utils;
+package com.pds.base.utils;
 
 import android.app.Activity;
 import android.content.Intent;

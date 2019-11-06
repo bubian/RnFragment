@@ -4,13 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import com.pds.rn.nav.RnNavigation;
 
-public abstract class BaseMedRouterMapping {
+public abstract class BaseRouter {
 
-    protected final MedRouterHelper.MedRouter mMedRouter;
+    protected final RnNavigation.MedRouter mMedRouter;
     protected final Intent mIntent = new Intent();
 
-    public BaseMedRouterMapping(MedRouterHelper.MedRouter medRouter) {
+    public BaseRouter(RnNavigation.MedRouter medRouter) {
         this.mMedRouter = medRouter;
     }
 
@@ -59,7 +60,6 @@ public abstract class BaseMedRouterMapping {
         }
         Intent intent = getIntent(context);
         if (null == intent.getComponent()) {
-            ToastUtil.showMessage(context, context.getResources().getString(R.string.med_router_error));
             return;
         }
         if (requestCode == 0) {
@@ -68,9 +68,5 @@ public abstract class BaseMedRouterMapping {
             Activity activity = (Activity) context;
             activity.startActivityForResult(intent, requestCode);
         }
-    }
-
-    public void toHome(Context context) {
-        MedRouterHelper.withUrl(HomeRouter.HOME).queryTarget().navigation(context);
     }
 }

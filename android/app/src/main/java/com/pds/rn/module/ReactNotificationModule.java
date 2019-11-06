@@ -1,4 +1,4 @@
-package com.pds.module;
+package com.pds.rn.module;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;

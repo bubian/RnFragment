@@ -3,9 +3,9 @@ package com.pds.rn.route;
 import android.content.Context;
 import com.pds.rn.nav.RnNavigation;
 
-public class LostPageRouter extends BaseRouter {
+public class ExceptionRouter extends BaseRouter {
 
-    public LostPageRouter(RnNavigation.MedRouter medRouter) {
+    public ExceptionRouter(RnNavigation.MedRouter medRouter) {
         super(medRouter);
     }
 
@@ -21,6 +21,6 @@ public class LostPageRouter extends BaseRouter {
 
     @Override
     public void navigation(Context context) {
-        
+
     }
 }

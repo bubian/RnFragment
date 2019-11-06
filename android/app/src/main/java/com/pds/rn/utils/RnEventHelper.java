@@ -11,28 +11,25 @@ import com.pds.rn.pa.CommonReactPackage;
  *
  * @author hmy
  */
-public class RnEventManager {
+public class RnEventHelper {
 
-    /**
-     * RNActivity执行onActivityResult
-     */
+    // RNActivity执行onActivityResult
     public static final String EVENT_KEY_ACTIVITY_RESULT = "MEDRN_PAGE_RESULT";
-    /**
-     * RNActivity执行onResume
-     */
+    // RNActivity执行onResume
     public static final String EVENT_KEY_PAGE_SHOW = "MEDRN_PAGE_SHOW";
-    /**
-     * RNActivity执行onStop
-     */
+    // RNActivity执行onStop
     public static final String EVENT_KEY_PAGE_HIDE = "MEDRN_PAGE_HIDE";
-    /**
-     * 通知RN关闭了键盘
-     */
+    // 通知RN关闭了键盘
     public static final String KEY_BOARD_DID_HIDE = "keyboardDidHide";
+    // Fragment可见
+    public static final String EVENT_KEY_FRAGMENT_WILL_APPEAR = "RNFragmentWillAppear";
+    // Fragment不可见
+    public static final String EVENT_KEY_FRAGMENT_WILL_DISAPPEAR = "RNFragmentWillDisappear";
+    // 页面回到前台
+    public static final String EVENT_KEY_PAGE_WILL_APPEAR = "RNPageWillAppear";
 
     /**
      * native 发送事件通知react js
-     *
      * @param eventName
      * @param params
      */

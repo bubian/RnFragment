@@ -1,4 +1,4 @@
-package com.medlinker.base.utils;
+package com.pds.base.utils;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -11,9 +11,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
-
-import com.medlinker.base.R;
-
+import com.pds.R;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -251,7 +249,6 @@ public class ImmersiveModeUtil {
      * 官方及主流rom
      *
      * @param activity
-     * @param darkmode
      */
     public static boolean setCommonStatusBarDarkMode(@NonNull Activity activity, boolean isFontColorDark) {
         boolean result = false;
