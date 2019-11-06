@@ -1,11 +1,9 @@
-package com.pdsrnproject;
-
-import com.facebook.react.ReactActivity;
+package com.pds.rn.rectactivity;
 
 /**
  * @author pengdaosong
  */
-public class MainActivity extends ReactActivity {
+public class MainActivity extends BaseRnActivity {
 
     /**
      * Returns the name of the main component registered from JavaScript.

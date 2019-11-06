@@ -1,4 +1,4 @@
-package com.pdsrnproject.rectfragment;
+package com.pds.rectfragment;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -6,9 +6,9 @@ import android.text.TextUtils;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
-import com.pdsrnproject.utils.FragmentRNCollector;
-import com.pdsrnproject.utils.IntentHelper;
-import com.pdsrnproject.utils.ReactNativeEventHelper;
+import com.pds.utils.FragmentRNCollector;
+import com.pds.utils.IntentHelper;
+import com.pds.utils.ReactNativeEventHelper;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.HashMap;

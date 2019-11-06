@@ -1,4 +1,4 @@
-package com.pdsrnproject;
+package com.pds;
 
 import android.app.Application;
 

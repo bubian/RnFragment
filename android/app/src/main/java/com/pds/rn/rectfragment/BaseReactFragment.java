@@ -1,4 +1,4 @@
-package com.pdsrnproject.rectfragment;
+package com.pds.rectfragment;
 
 
 import android.app.Activity;

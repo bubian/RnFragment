@@ -1,12 +1,11 @@
-package com.pdsrnproject.pa;
+package com.pds.pa;
 
 import com.facebook.react.ReactPackage;
-import com.facebook.react.bridge.JavaScriptModule;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
-import com.pdsrnproject.module.CommonRTCModule;
-import com.pdsrnproject.module.ReactNotificationModule;
+import com.pds.module.CommonRTCModule;
+import com.pds.module.ReactNotificationModule;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

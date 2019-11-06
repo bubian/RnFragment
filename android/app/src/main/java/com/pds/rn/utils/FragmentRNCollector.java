@@ -1,11 +1,9 @@
-package com.pdsrnproject.utils;
+package com.pds.utils;
 
 import java.util.HashMap;
 
 /**
- * 装载RN的fragment容器
- *
- * @author hmy
+ * @author pengdaosong
  */
 public class FragmentRNCollector {
 
