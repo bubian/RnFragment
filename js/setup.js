@@ -8,8 +8,8 @@
 
 import React, {Component} from 'react';
 import { Image , Text , View ,StyleSheet} from 'react-native';
-import InputTextView from '../component/InputTextView'
-import SnackBar from '../component/SnackBarView'
+import InputTextView from './component/InputTextView'
+import SnackBar from './component/SnackBarView'
 class Greeting extends Component{
     constructor(props){
         super(props);

@@ -10,10 +10,7 @@ export default class HomeActivity extends Component {
     render() {
       return (
         <View style={styles.container}>
-  
-          <Button onPress={this.DisplaySnackBar} title=" Show SnackBar ">
-          </Button>
-  
+          <Button onPress={this.DisplaySnackBar} title=" Show SnackBar "/>>
           <SnackBar ref="ReactNativeSnackBar" />
         </View>
       );
