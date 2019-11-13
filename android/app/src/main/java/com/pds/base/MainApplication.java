@@ -9,6 +9,7 @@ import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.pds.BuildConfig;
 import com.pds.rn.pa.CommonReactPackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import java.util.Arrays;
 import java.util.List;
 
@@ -42,7 +43,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-          new CommonReactPackage()
+          new CommonReactPackage(),
+        new RNGestureHandlerPackage()
       );
     }
 

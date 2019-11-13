@@ -19,7 +19,9 @@ import {
   TextInput,
   TouchableHighlight,
   Animated} from "react-native";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
+WINDOW_WIDTH = Dimensions.get("screen").width;
 export default class Login extends Component{
 
   state = {
@@ -39,7 +41,12 @@ export default class Login extends Component{
           textAlignVertical="center"
           placeholderTextColor="#a8afc3"
           placeholder="请输入您的手机号码" 
-          underlineColorAndroid="#007eff"/>
+          multiline={false}
+          keyboardType="numeric"
+          maxLength = {11}
+          textContentType="telephoneNumber"
+          underlineColorAndroid="#007eff"
+          />
 
         <View style={{position:"relative"}}>
           <TextInput 
@@ -47,10 +54,14 @@ export default class Login extends Component{
             textAlignVertical="center"
             placeholderTextColor="#a8afc3" 
             placeholder="请输入短信验证码" 
+            textContentType="password"
             underlineColorAndroid="#a8afc3"/>
       
-          <Text style={{color:"#007eff",fontSize:14,position:"absolute",right:15,bottom:25}} onPress={()=>{this.setState({defaultAnimationModal:true})}}>获取验证码</Text>
+          <Text 
+            style={{color:"#007eff",fontSize:14,position:"absolute",right:15,bottom:25,height:50,textAlignVertical:"bottom"}} 
+            onPress={()=>{this.setState({defaultAnimationModal:true})}}>获取验证码</Text>
         </View>
+        {/* 开启医联 */}
         <RoundButton/>
         <View style={{flexDirection:"row",marginTop:50}}>
           <View style={{flexDirection:"column",flex:1,alignItems:"center"}}>
@@ -77,19 +88,12 @@ export default class Login extends Component{
     return(
       <View style={{position:"absolute"}}>
         <Modal 
-          width={0.9}
-          rounded
+          width={0.8}
+          rounded={false}
           actionsBordered
           visible={this.state.defaultAnimationModal}
-          onTouchOutside={()=>{
-            this.setState({defaultAnimationModal:false})
-          }}
-          modalTitle={
-            <ModalTitle
-              title="Popup Modal - Default Animation"
-              align="left"
-            />
-          }>
+          onTouchOutside={()=>{this.setState({defaultAnimationModal:false})}}>
+        
         </Modal>
       </View>
     )
@@ -104,6 +108,14 @@ const loginStyles = StyleSheet.create({
   loginText: {
     fontSize:12,
     color:"#7C7C86"
+  },
+  icon: {
+    width:WINDOW_WIDTH,
+    height: 210,
+  },
+  iconRect: {
+    width:60,
+    height: 60,
   },
   input:{
     paddingTop: 15,

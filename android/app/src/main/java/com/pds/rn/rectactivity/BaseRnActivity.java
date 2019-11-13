@@ -10,6 +10,7 @@ import com.facebook.react.ReactRootView;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.pds.rn.utils.RnEventHelper;
+import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 
 /**
  * @author: pengdaosong CreateTime:  2019-11-05 16:23 Email：pengdaosong@medlinker.com Description:
@@ -103,7 +104,10 @@ public class BaseRnActivity extends ReactActivity {
         RnActivityDelegate delegate = new RnActivityDelegate(this, getMainComponentName()) {
             @Override
             protected ReactRootView createRootView() {
-                return super.createRootView();
+                // npm install --save react-native-gesture-handler 解决手势拦截等问题
+                // 需要安装上面的手势库
+                 return new RNGestureHandlerEnabledRootView(BaseRnActivity.this);
+//                return super.createRootView();
             }
         };
         delegate.setLaunchOptions(optionBundle);
