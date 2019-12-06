@@ -6,5 +6,6 @@ import setup from './js/setup'
 import input from './js/component/InputTextView'
 import bar from './js/home/AppHome'
 import login from './js/login/login'
+import gesture from './js/gesture/gesture'
 
 AppRegistry.registerComponent(appName, () => login);

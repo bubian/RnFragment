@@ -1,5 +1,7 @@
 apply plugin: "com.android.application"
 
+apply plugin: 'checkstyle'
+
 import com.android.build.OutputFile
 
 project.ext.react = [
@@ -33,6 +35,21 @@ android {
             if (abi != null) {  // null for the universal-debug, universal-release variants
                 output.versionCodeOverride =
                         versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
+            }
+        }
+    }
+}
+
+buildscript {
+    tasks.withType(Checkstyle){
+        println("reports start")
+        reports {
+            xml.enabled false
+            html {
+                enabled true
+                destination "build/checkstyle.html"
+                outputType OutputType.FILE
+                stylesheet resources.text.fromFile('config/xsl/checkstyle-custom.xsl')
             }
         }
     }
