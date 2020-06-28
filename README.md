@@ -1,0 +1,3 @@
+# RnFragment
+Rn提供了在Activity中直接加载RN相关的view，却没有在提供在Fragment中的使用，这个库封装Rn在fragment中Rn的加载流程。
+同时包含了rn最基础的模块，rn和原生通信等功能
